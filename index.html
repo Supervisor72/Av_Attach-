@@ -30,6 +30,20 @@
       font-size: 16px;
       cursor: pointer;
     }
+    #totaleContainer {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    #totaleValue {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+      display: inline-block;
+      min-width: 60px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -48,17 +62,20 @@
         <option value="PESARO">PESARO</option>
       </select>
     </label>
+    <div id="totaleContainer">
+      TOTALE: <span id="totaleValue">0%</span>
+    </div>
 
     <fieldset>
       <legend>GENERALE</legend>
-      <label>ESTENDO <select name="GENERALE - ESTENDO" class="colorSelect">
+      <label>ESTENDO <select name="GENERALE - ESTENDO" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>QUSTODIA <select name="GENERALE - QUSTODIA" class="colorSelect">
+      <label>QUSTODIA <select name="GENERALE - QUSTODIA" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
@@ -69,14 +86,14 @@
 
     <fieldset>
       <legend>CASSA</legend>
-      <label>MYFANSAFE <select name="CASSA - MYFANSAFE" class="colorSelect">
+      <label>MYFANSAFE <select name="CASSA - MYFANSAFE" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>CARTE FAN <select name="CASSA - CARTE FAN" class="colorSelect">
+      <label>CARTE FAN <select name="CASSA - CARTE FAN" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
@@ -87,28 +104,28 @@
 
     <fieldset>
       <legend>BIANCO</legend>
-      <label>EKOS <select name="BIANCO - EKOS" class="colorSelect">
+      <label>EKOS <select name="BIANCO - EKOS" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>ASCIUGATRICI <select name="BIANCO - ASCIUGATRICI" class="colorSelect">
+      <label>ASCIUGATRICI <select name="BIANCO - ASCIUGATRICI" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>SCHUCKO <select name="BIANCO - SCHUCKO" class="colorSelect">
+      <label>SCHUCKO <select name="BIANCO - SCHUCKO" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>ANTICALCARE <select name="BIANCO - ANTICALCARE" class="colorSelect">
+      <label>ANTICALCARE <select name="BIANCO - ANTICALCARE" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
@@ -119,56 +136,56 @@
 
     <fieldset>
       <legend>PED</legend>
-      <label>SACCHETTI <select name="PED - SACCHETTI" class="colorSelect">
+      <label>SACCHETTI <select name="PED - SACCHETTI" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>ACC MICROONDE <select name="PED - ACC MICROONDE" class="colorSelect">
+      <label>ACC MICROONDE <select name="PED - ACC MICROONDE" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>CARAFFE <select name="PED - CARAFFE" class="colorSelect">
+      <label>CARAFFE <select name="PED - CARAFFE" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>CAFFE’ <select name="PED - CAFFE’" class="colorSelect">
+      <label>CAFFE' <select name="PED - CAFFE'" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>TESTINE <select name="PED - TESTINE" class="colorSelect">
+      <label>TESTINE <select name="PED - TESTINE" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>ACC ROBOT <select name="PED - ACC ROBOT" class="colorSelect">
+      <label>ACC ROBOT <select name="PED - ACC ROBOT" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>ACC IMPASTATORI <select name="PED - ACC IMPASTATORI" class="colorSelect">
+      <label>ACC IMPASTATORI <select name="PED - ACC IMPASTATORI" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>PRODOTTI/CARAFFE <select name="PED - PRODOTTI/CARAFFE" class="colorSelect">
+      <label>PRODOTTI/CARAFFE <select name="PED - PRODOTTI/CARAFFE" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
@@ -179,14 +196,14 @@
 
     <fieldset>
       <legend>TV</legend>
-      <label>ACCESSORI <select name="TV - ACCESSORI" class="colorSelect">
+      <label>ACCESSORI <select name="TV - ACCESSORI" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>SOUNDBAR <select name="TV - SOUNDBAR" class="colorSelect">
+      <label>SOUNDBAR <select name="TV - SOUNDBAR" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
@@ -197,49 +214,49 @@
 
     <fieldset>
       <legend>INFORMATICA</legend>
-      <label>CARTUCCE <select name="INFORMATICA - CARTUCCE" class="colorSelect">
+      <label>CARTUCCE <select name="INFORMATICA - CARTUCCE" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>SERVIZI <select name="INFORMATICA - SERVIZI" class="colorSelect">
+      <label>SERVIZI <select name="INFORMATICA - SERVIZI" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>ANTIVIRUS <select name="INFORMATICA - ANTIVIRUS" class="colorSelect">
+      <label>ANTIVIRUS <select name="INFORMATICA - ANTIVIRUS" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>OFFICE <select name="INFORMATICA - OFFICE" class="colorSelect">
+      <label>OFFICE <select name="INFORMATICA - OFFICE" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>PACKPROMO <select name="INFORMATICA - PACKPROMO" class="colorSelect">
+      <label>PACKPROMO <select name="INFORMATICA - PACKPROMO" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>MAC ESTENSIONI <select name="INFORMATICA - MAC ESTENSIONI" class="colorSelect">
+      <label>MAC ESTENSIONI <select name="INFORMATICA - MAC ESTENSIONI" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>WATCH ESTENSIONI <select name="INFORMATICA - WATCH ESTENSIONI" class="colorSelect">
+      <label>WATCH ESTENSIONI <select name="INFORMATICA - WATCH ESTENSIONI" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
@@ -250,35 +267,35 @@
 
     <fieldset>
       <legend>TELEFONIA</legend>
-      <label>SERVIZI <select name="TELEFONIA - SERVIZI" class="colorSelect">
+      <label>SERVIZI <select name="TELEFONIA - SERVIZI" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>FASTAKIN <select name="TELEFONIA - FASTAKIN" class="colorSelect">
+      <label>FASTAKIN <select name="TELEFONIA - FASTAKIN" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>CLEANVIR <select name="TELEFONIA - CLEANVIR" class="colorSelect">
+      <label>CLEANVIR <select name="TELEFONIA - CLEANVIR" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>PACKPROMO <select name="TELEFONIA - PACKPROMO" class="colorSelect">
+      <label>PACKPROMO <select name="TELEFONIA - PACKPROMO" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-      <label>ESTEN. IPHONE <select name="TELEFONIA - ESTEN. IPHONE" class="colorSelect">
+      <label>ESTEN. IPHONE <select name="TELEFONIA - ESTEN. IPHONE" class="colorSelect" onchange="calcolaTotale()">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
@@ -294,11 +311,53 @@
   </form>
 
   <script>
+    // Calcola il totale in percentuale quando la pagina si carica
+    document.addEventListener('DOMContentLoaded', calcolaTotale);
+
+    function calcolaTotale() {
+      const selects = document.querySelectorAll('.colorSelect');
+      const totale = selects.length;
+      let verdeCount = 0;
+      let verdinoCount = 0;
+      
+      selects.forEach(select => {
+        const colore = select.value;
+        if (colore === "Verde") {
+          verdeCount++;
+        } else if (colore === "Verdino") {
+          verdinoCount++;
+        }
+      });
+      
+      // Calcola la percentuale di voci "verdi" e "verdino" rispetto al totale
+      const percentuale = Math.round(((verdeCount + verdinoCount) / totale) * 100);
+      
+      // Aggiorna il valore visualizzato
+      document.getElementById('totaleValue').textContent = percentuale + '%';
+      
+      // Aggiorna il colore di sfondo in base alla percentuale
+      const totaleElement = document.getElementById('totaleValue');
+      if (percentuale >= 75) {
+        totaleElement.style.backgroundColor = '#8BC34A'; // Verde
+        totaleElement.style.color = 'white';
+      } else if (percentuale >= 50) {
+        totaleElement.style.backgroundColor = '#CDDC39'; // Verdino/Lime
+        totaleElement.style.color = 'black';
+      } else if (percentuale >= 25) {
+        totaleElement.style.backgroundColor = '#FFEB3B'; // Giallo
+        totaleElement.style.color = 'black';
+      } else {
+        totaleElement.style.backgroundColor = '#FF5722'; // Arancio/Rosso
+        totaleElement.style.color = 'white';
+      }
+    }
+
     function generaMessaggio() {
       const data = document.getElementById('data').value;
       const puntoVendita = document.getElementById('puntoVendita').value;
+      const totale = document.getElementById('totaleValue').textContent;
 
-      let messaggio = `📅 DATA: ${data || 'N.D.'}\n🏬 PUNTO VENDITA: ${puntoVendita || 'N.D.'}\n\n🔴🟠🟡 Report Attività Critiche:\n`;
+      let messaggio = `📅 DATA: ${data || 'N.D.'}\n🏬 PUNTO VENDITA: ${puntoVendita || 'N.D.'}\n📊 TOTALE: ${totale}\n\n🔴🟠🟡 Report Attività Critiche:\n`;
 
       const selects = document.querySelectorAll('.colorSelect');
       const sezioni = {};
