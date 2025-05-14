@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Form Monitoraggio Aree</title>
+  <title>Form Colori Aree</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -20,11 +19,13 @@
     }
     label {
       display: block;
-      margin-top: 5px;
+      margin-top: 10px;
+      margin-bottom: 5px;
     }
     select, input[type="date"] {
       margin-bottom: 10px;
       padding: 5px;
+      font-size: 14px;
     }
     button {
       margin-right: 10px;
@@ -36,17 +37,17 @@
 </head>
 <body>
 
-  <h1>🛠️ AV Attach - Mese in Corso</h1>
+  <h1>AV Attach - Mese in Corso</h1>
   <form id="colorForm">
 
-    <!-- Nuovi campi: Data e Punto Vendita -->
-    <label for="data">📅 Data:
-      <input type="date" id="data" name="data" required>
+    <!-- Nuovi campi -->
+    <label for="data">DATA:
+      <input type="date" id="data" name="DATA" required>
     </label>
 
-    <label for="puntoVendita">🏬 Punto Vendita:
-      <select id="puntoVendita" name="puntoVendita" required>
-        <option value="">-- Seleziona --</option>
+    <label for="puntoVendita">PUNTO VENDITA:
+      <select id="puntoVendita" name="PUNTO VENDITA" required>
+        <option value="">--Seleziona--</option>
         <option value="FANO">FANO</option>
         <option value="MONSANO">MONSANO</option>
         <option value="OSIMO">OSIMO</option>
@@ -56,9 +57,7 @@
       </select>
     </label>
 
-    <br><br>
-
-    <!-- Esempio Aree -->
+    <!-- AREE -->
     <fieldset>
       <legend>GENERALE</legend>
       <label>ESTENDO <select name="GENERALE - ESTENDO" class="colorSelect">
@@ -68,7 +67,6 @@
         <option value="Arancio">Arancio</option>
         <option value="Rosso">Rosso</option>
       </select></label>
-
       <label>QUSTODIA <select name="GENERALE - QUSTODIA" class="colorSelect">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
@@ -78,19 +76,239 @@
       </select></label>
     </fieldset>
 
-    <!-- Pulsanti -->
-    <button type="button" onclick="sendEmail()">📧 Invia via Email</button>
-    <button type="button" onclick="sendTelegram()">📲 Invia via Telegram</button>
+    <fieldset>
+      <legend>CASSA</legend>
+      <label>MYFANSAFE <select name="CASSA - MYFANSAFE" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>CARTE FAN <select name="CASSA - CARTE FAN" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>BIANCO</legend>
+      <label>EKOS <select name="BIANCO - EKOS" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>ASCIUGATRICI <select name="BIANCO - ASCIUGATRICI" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>SCHUCKO <select name="BIANCO - SCHUCKO" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>ANTICALCARE <select name="BIANCO - ANTICALCARE" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>PED</legend>
+      <label>SACCHETTI <select name="PED - SACCHETTI" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>ACC MICROONDE <select name="PED - ACC MICROONDE" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>CARAFFE <select name="PED - CARAFFE" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>CAFFE’ <select name="PED - CAFFE’" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>TESTINE <select name="PED - TESTINE" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>ACC ROBOT <select name="PED - ACC ROBOT" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>ACC IMPASTATORI <select name="PED - ACC IMPASTATORI" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>PRODOTTI/CARAFFE <select name="PED - PRODOTTI/CARAFFE" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>TV</legend>
+      <label>ACCESSORI <select name="TV - ACCESSORI" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>SOUNDBAR <select name="TV - SOUNDBAR" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>INFORMATICA</legend>
+      <label>CARTUCCE <select name="INFORMATICA - CARTUCCE" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>SERVIZI <select name="INFORMATICA - SERVIZI" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>ANTIVIRUS <select name="INFORMATICA - ANTIVIRUS" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>OFFICE <select name="INFORMATICA - OFFICE" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>PACKPROMO <select name="INFORMATICA - PACKPROMO" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>MAC ESTENSIONI <select name="INFORMATICA - MAC ESTENSIONI" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>WATCH ESTENSIONI <select name="INFORMATICA - WATCH ESTENSIONI" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>TELEFONIA</legend>
+      <label>SERVIZI <select name="TELEFONIA - SERVIZI" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>FASTAKIN <select name="TELEFONIA - FASTAKIN" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>CLEANVIR <select name="TELEFONIA - CLEANVIR" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>PACKPROMO <select name="TELEFONIA - PACKPROMO" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+      <label>ESTEN. IPHONE <select name="TELEFONIA - ESTEN. IPHONE" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+    </fieldset>
+
+    <button type="button" onclick="sendEmail()">Invia via Email</button>
+    <button type="button" onclick="sendTelegram()">Invia via Telegram</button>
 
   </form>
 
   <script>
     function generaMessaggio() {
-      const selects = document.querySelectorAll('.colorSelect');
       const data = document.getElementById('data').value;
       const puntoVendita = document.getElementById('puntoVendita').value;
 
-      let messaggio = `🗓️ Data: ${data}\n🏬 Punto Vendita: ${puntoVendita}\n\n🔴🟠🟡 Report Attività Critiche:\n\n`;
+      let messaggio = `📅 DATA: ${data || 'N.D.'}\n🏬 PUNTO VENDITA: ${puntoVendita || 'N.D.'}\n\n🔴🟠🟡 Report Attività Critiche:\n\n`;
+
+      const selects = document.querySelectorAll('.colorSelect');
 
       selects.forEach(select => {
         const colore = select.value;
