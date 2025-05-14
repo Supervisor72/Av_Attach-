@@ -1,18 +1,119 @@
-function generaMessaggio() {
-  const selects = document.querySelectorAll('.colorSelect');
-  const data = document.getElementById('data').value;
-  const puntoVendita = document.getElementById('puntoVendita').value;
 
-  let messaggio = `🗓️ Data: ${data}\n🏬 Punto Vendita: ${puntoVendita}\n\n🔴🟠🟡 Report Attività Critiche:\n\n`;
-
-  selects.forEach(select => {
-    const colore = select.value;
-    const nomeCampo = select.name;
-
-    if (["Giallo", "Arancio", "Rosso"].includes(colore)) {
-      messaggio += `- ${nomeCampo}: ${colore}\n`;
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Monitoraggio Aree</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
     }
-  });
+    fieldset {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    legend {
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin-top: 5px;
+    }
+    select, input[type="date"] {
+      margin-bottom: 10px;
+      padding: 5px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
 
-  return encodeURIComponent(messaggio.trim());
-}
+  <h1>🛠️ AV Attach - Mese in Corso</h1>
+  <form id="colorForm">
+
+    <!-- Nuovi campi: Data e Punto Vendita -->
+    <label for="data">📅 Data:
+      <input type="date" id="data" name="data" required>
+    </label>
+
+    <label for="puntoVendita">🏬 Punto Vendita:
+      <select id="puntoVendita" name="puntoVendita" required>
+        <option value="">-- Seleziona --</option>
+        <option value="FANO">FANO</option>
+        <option value="MONSANO">MONSANO</option>
+        <option value="OSIMO">OSIMO</option>
+        <option value="MACERATA">MACERATA</option>
+        <option value="CIVITANOVA">CIVITANOVA</option>
+        <option value="PESARO">PESARO</option>
+      </select>
+    </label>
+
+    <br><br>
+
+    <!-- Esempio Aree -->
+    <fieldset>
+      <legend>GENERALE</legend>
+      <label>ESTENDO <select name="GENERALE - ESTENDO" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+
+      <label>QUSTODIA <select name="GENERALE - QUSTODIA" class="colorSelect">
+        <option value="Verde">Verde</option>
+        <option value="Verdino">Verdino</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Arancio">Arancio</option>
+        <option value="Rosso">Rosso</option>
+      </select></label>
+    </fieldset>
+
+    <!-- Pulsanti -->
+    <button type="button" onclick="sendEmail()">📧 Invia via Email</button>
+    <button type="button" onclick="sendTelegram()">📲 Invia via Telegram</button>
+
+  </form>
+
+  <script>
+    function generaMessaggio() {
+      const selects = document.querySelectorAll('.colorSelect');
+      const data = document.getElementById('data').value;
+      const puntoVendita = document.getElementById('puntoVendita').value;
+
+      let messaggio = `🗓️ Data: ${data}\n🏬 Punto Vendita: ${puntoVendita}\n\n🔴🟠🟡 Report Attività Critiche:\n\n`;
+
+      selects.forEach(select => {
+        const colore = select.value;
+        const nomeCampo = select.name;
+
+        if (["Giallo", "Arancio", "Rosso"].includes(colore)) {
+          messaggio += `- ${nomeCampo}: ${colore}\n`;
+        }
+      });
+
+      return encodeURIComponent(messaggio.trim());
+    }
+
+    function sendEmail() {
+      const body = generaMessaggio();
+      window.location.href = `mailto:d.pavoni@dml-italia.com?subject=Report Aree Critiche&body=${body}`;
+    }
+
+    function sendTelegram() {
+      const messaggio = generaMessaggio();
+      window.open(`https://t.me/share/url?url=&text=${messaggio}`, "_blank");
+    }
+  </script>
+
+</body>
+</html>
