@@ -1,0 +1,18 @@
+function generaMessaggio() {
+  const selects = document.querySelectorAll('.colorSelect');
+  const data = document.getElementById('data').value;
+  const puntoVendita = document.getElementById('puntoVendita').value;
+
+  let messaggio = `🗓️ Data: ${data}\n🏬 Punto Vendita: ${puntoVendita}\n\n🔴🟠🟡 Report Attività Critiche:\n\n`;
+
+  selects.forEach(select => {
+    const colore = select.value;
+    const nomeCampo = select.name;
+
+    if (["Giallo", "Arancio", "Rosso"].includes(colore)) {
+      messaggio += `- ${nomeCampo}: ${colore}\n`;
+    }
+  });
+
+  return encodeURIComponent(messaggio.trim());
+}
