@@ -30,18 +30,11 @@
       font-size: 16px;
       cursor: pointer;
     }
-    #totaleContainer {
-      font-weight: bold;
-      margin-bottom: 15px;
-      font-size: 16px;
-    }
     #totaleValue {
       padding: 5px 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      background-color: #f9f9f9;
-      display: inline-block;
-      min-width: 60px;
+      width: 60px;
       text-align: center;
     }
   </style>
@@ -62,13 +55,13 @@
         <option value="PESARO">PESARO</option>
       </select>
     </label>
-    <div id="totaleContainer">
-      TOTALE: <span id="totaleValue">0%</span>
-    </div>
+    <label>TOTALE: 
+      <input type="text" id="totaleValue" placeholder="0%" style="width: 60px; text-align: center; padding: 5px;">
+    </label>
 
     <fieldset>
       <legend>GENERALE</legend>
-      <label>ESTENDO <select name="GENERALE - ESTENDO" class="colorSelect" onchange="calcolaTotale()">
+      <label>ESTENDO <select name="GENERALE - ESTENDO" class="colorSelect">
         <option value="Verde">Verde</option>
         <option value="Verdino">Verdino</option>
         <option value="Giallo">Giallo</option>
@@ -311,53 +304,19 @@
   </form>
 
   <script>
-    // Calcola il totale in percentuale quando la pagina si carica
-    document.addEventListener('DOMContentLoaded', calcolaTotale);
+    // Rimuoviamo la funzione automatica che calcola il totale
+    // document.addEventListener('DOMContentLoaded', calcolaTotale);
 
     function calcolaTotale() {
-      const selects = document.querySelectorAll('.colorSelect');
-      const totale = selects.length;
-      let verdeCount = 0;
-      let verdinoCount = 0;
-      
-      selects.forEach(select => {
-        const colore = select.value;
-        if (colore === "Verde") {
-          verdeCount++;
-        } else if (colore === "Verdino") {
-          verdinoCount++;
-        }
-      });
-      
-      // Calcola la percentuale di voci "verdi" e "verdino" rispetto al totale
-      const percentuale = Math.round(((verdeCount + verdinoCount) / totale) * 100);
-      
-      // Aggiorna il valore visualizzato
-      document.getElementById('totaleValue').textContent = percentuale + '%';
-      
-      // Aggiorna il colore di sfondo in base alla percentuale
-      const totaleElement = document.getElementById('totaleValue');
-      if (percentuale >= 75) {
-        totaleElement.style.backgroundColor = '#8BC34A'; // Verde
-        totaleElement.style.color = 'white';
-      } else if (percentuale >= 50) {
-        totaleElement.style.backgroundColor = '#CDDC39'; // Verdino/Lime
-        totaleElement.style.color = 'black';
-      } else if (percentuale >= 25) {
-        totaleElement.style.backgroundColor = '#FFEB3B'; // Giallo
-        totaleElement.style.color = 'black';
-      } else {
-        totaleElement.style.backgroundColor = '#FF5722'; // Arancio/Rosso
-        totaleElement.style.color = 'white';
-      }
+      // Questa funzione non viene più usata ma la manteniamo per riferimento futuro
     }
 
     function generaMessaggio() {
       const data = document.getElementById('data').value;
       const puntoVendita = document.getElementById('puntoVendita').value;
-      const totale = document.getElementById('totaleValue').textContent;
+      const totale = document.getElementById('totaleValue').value;
 
-      let messaggio = `📅 DATA: ${data || 'N.D.'}\n🏬 PUNTO VENDITA: ${puntoVendita || 'N.D.'}\n📊 TOTALE: ${totale}\n\n🔴🟠🟡 Report Attività Critiche:\n`;
+      let messaggio = `📅 DATA: ${data || 'N.D.'}\n🏬 PUNTO VENDITA: ${puntoVendita || 'N.D.'}\n📊 TOTALE: ${totale || '0%'}\n\n🔴🟠🟡 Report Attività Critiche:\n`;
 
       const selects = document.querySelectorAll('.colorSelect');
       const sezioni = {};
